@@ -1,0 +1,12 @@
+2026-02-27 17:35:34 INFO  TC002_Login:16 - Starting TC001_AccountRegistration
+2026-02-27 17:35:34 INFO  TC002_Login:20 - Clicking on MyAccount
+2026-02-27 17:35:35 INFO  TC002_Login:22 - Clicking on Login
+2026-02-27 17:35:36 INFO  TC002_Login:25 - Entering customer login details
+2026-02-27 17:35:39 INFO  TC002_Login:31 - Validating expected message
+2026-02-27 17:35:39 INFO  TC002_Login:42 - Finished TC002_Login
+2026-03-01 17:09:27 INFO  TC002_Login:16 - Starting TC001_AccountRegistration
+2026-03-01 17:09:27 INFO  TC002_Login:20 - Clicking on MyAccount
+2026-03-01 17:09:27 INFO  TC002_Login:22 - Clicking on Login
+2026-03-01 17:09:28 INFO  TC002_Login:25 - Entering customer login details
+2026-03-01 17:09:31 INFO  TC002_Login:31 - Validating expected message
+2026-03-01 17:09:31 INFO  TC002_Login:42 - Finished TC002_Login
