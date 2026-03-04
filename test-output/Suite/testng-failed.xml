@@ -6,20 +6,20 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="Chrome"/>
-    <parameter name="operator" value="Linux"/>
+    <parameter name="operator" value="Windows"/>
     <groups>
       <run>
-        <include name="Sanity"/>
+        <include name="Datadriven"/>
       </run>
     </groups>
     <classes>
-      <class name="testCases.TC002_Login">
+      <class name="testCases.TC003_LoginDDT">
         <methods>
           <include name="setup"/>
+          <include name="verify_loginDDT" invocation-numbers="0 1 2"/>
           <include name="exit"/>
-          <include name="verify_account_registration"/>
         </methods>
-      </class> <!-- testCases.TC002_Login -->
+      </class> <!-- testCases.TC003_LoginDDT -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

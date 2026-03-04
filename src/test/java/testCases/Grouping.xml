@@ -3,26 +3,26 @@
 
 <suite name="Suite">
 
-<groups>
+    <groups>
+        <run>
+            <include name="Datadriven"/>
+        </run>
+    </groups>
 
-<run>
-<include name="Sanity"></include>
+    <listeners>
+        <listener class-name="utilities.ExtentReportManager"/>
+    </listeners>
 
-</run>
-</groups>
+    <test thread-count="5" name="Test">
+        <parameter name="operator" value="Windows"/>
+        <parameter name="browser" value="Chrome"/>
 
-<listeners>
-<listener class-name="utilities.ExtentReportManager"></listener>
-</listeners>
-
-  <test thread-count="5" name="Test">
-      <parameter name="operator" value="Linux"/>
-      <parameter name="browser" value="Chrome"/>
-
-    <classes>
+        <classes>
       <class name="testCases.TC001_AccountRegistration"/>
       <class name="testCases.TC002_Login"/>
       <class name="testCases.TC003_LoginDDT"/>
-    </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+      <class name="testCases.TC004_SearchProduct"/>
+        </classes>
+    </test>
+
+</suite>

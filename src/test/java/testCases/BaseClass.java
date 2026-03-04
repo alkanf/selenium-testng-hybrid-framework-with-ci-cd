@@ -1,7 +1,6 @@
 package testCases;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.text.SimpleDateFormat;
@@ -28,78 +27,77 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 public class BaseClass {
+
 	public static WebDriver driver;
-	public Logger logger; // Log4j
+	public Logger logger = LogManager.getLogger(this.getClass()); // Log4j
 	public Properties p;
 
-	@BeforeClass(groups = { "Sanity", "Regression", "Master" })
+	@BeforeClass(alwaysRun = true)
 	@Parameters({ "operator", "browser" })
 	public void setup(String operator, String browser) throws IOException {
-		// Loading config.properfies file
-		FileReader file = new FileReader(
-				"C:\\Users\\alkan\\Selenium_Frameworks\\Opencart\\src\\test\\resources\\config.properties");
-		p = new Properties();
-		p.load(file);
 
-		logger = LogManager.getLogger(this.getClass()); // LogManager class is getting class for each log
+		// Loading config.properfies file
+		p = new Properties();
+		p.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
 
 		// Loading remote from config.properties for Grid
 		if (p.getProperty("execution_env").equalsIgnoreCase("remote")) {
+
 			DesiredCapabilities capabilities = new DesiredCapabilities();
+
 			// operating system
 			if (operator.equalsIgnoreCase("windows")) {
 				capabilities.setPlatform(Platform.WIN10);
 			} else if (operator.equalsIgnoreCase("linux")) {
 				capabilities.setPlatform(Platform.LINUX);
-
 			} else {
 				System.out.println("No Matching Operator System");
 				return;
 			}
+
+			String gridURL = p.getProperty("gridURL"); // Correct grid URL
+
 			// browser, can write if or switch in this case
 			// Chrome options for docker
 			switch (browser.toLowerCase()) {
+
 			case "chrome":
 
-			    ChromeOptions options = new ChromeOptions();
-			    options.addArguments("--headless=new");
-			    options.addArguments("--no-sandbox");
-			    options.addArguments("--disable-dev-shm-usage");
-			    options.addArguments("--remote-allow-origins=*");
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--headless=new");
+				options.addArguments("--no-sandbox");
+				options.addArguments("--disable-dev-shm-usage");
+				options.addArguments("--remote-allow-origins=*");
 
-			    options.merge(capabilities);
+				options.merge(capabilities);
 
-			    driver = new RemoteWebDriver(
-			            URI.create("gridURL").toURL(),
-			            options
-			    );
+				driver = new RemoteWebDriver(
+						URI.create(gridURL).toURL(),
+						options);
 
-			    break;
+				break;
 
 			case "firefox":
 
-			    FirefoxOptions foptions = new FirefoxOptions();
-			    foptions.addArguments("-headless");
+				FirefoxOptions foptions = new FirefoxOptions();
+				foptions.addArguments("-headless");
 
-			    foptions.merge(capabilities);
+				foptions.merge(capabilities);
 
-			    driver = new RemoteWebDriver(
-			            URI.create("gridURL").toURL(),
-			            foptions
-			    );
+				driver = new RemoteWebDriver(
+						URI.create(gridURL).toURL(),
+						foptions);
 
-			    break;
-			default:System.out.println("Invalid browser name.."); return;
+				break;
+
+			default:
+				System.out.println("Invalid browser name..");
+				return;
 			}
-			String gridURL = p.getProperty("gridURL");
-
-			driver = new RemoteWebDriver(
-			        URI.create(gridURL).toURL(),
-			        capabilities
-			);	}
+		}
 
 		// Local Execution
-		if(p.getProperty("execution_env").equalsIgnoreCase("local")) {
+		if (p.getProperty("execution_env").equalsIgnoreCase("local")) {
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				driver = new ChromeDriver();
@@ -123,9 +121,11 @@ public class BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
-	@AfterClass(groups = { "Sanity", "Regression", "Master" })
+	@AfterClass(alwaysRun = true)
 	public void exit() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 	// Random Test Data Methods
@@ -140,12 +140,20 @@ public class BaseClass {
 	// Capture SS Method for Extend Utility Class, Tname is test name
 	// TakesScreenshot is interface and timestap must be created
 	public String captureScreen(String tname) throws IOException {
+
 		String timeStamp = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+
+		if (driver == null) {
+			return null;
+		}
+
 		TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
 		File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-		String targetFilePath = System.getProperty("user.dir") + "\\screenshots\\" + tname + "_" + timeStamp + ".png";
-		File targetFile = new File(targetFilePath);
 
+		String targetFilePath = System.getProperty("user.dir") + "\\screenshots\\"
+				+ tname + "_" + timeStamp + ".png";
+
+		File targetFile = new File(targetFilePath); 
 		sourceFile.renameTo(targetFile);
 
 		return targetFilePath; // Not only created but you need to pass to report also
