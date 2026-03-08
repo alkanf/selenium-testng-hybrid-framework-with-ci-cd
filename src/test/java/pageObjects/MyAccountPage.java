@@ -11,6 +11,8 @@ public class MyAccountPage extends BasePage {
 	//2) Locators, shouldnt be changed from outside
 	private final By get_MyAccount = By.xpath("//h2[normalize-space()='My Account']");
 	private final By btn_Logout = By.xpath("//a[@class='list-group-item'][normalize-space()='Logout']");
+	private final By txt_Searchbox = By.xpath("(//input[@placeholder='Search'])[1]");
+	private final By btn_search = By.xpath("//button[@class='btn btn-default btn-lg']");
 	//3) Actions, make public so other packages can access it
 	public boolean validateMyAccount() {
 		try {
@@ -21,6 +23,11 @@ public class MyAccountPage extends BasePage {
 	public void clickLogout() {
 		driver.findElement(btn_Logout).click();
 	}
-	
+	public void typeProduct(String product) {
+		driver.findElement(txt_Searchbox).sendKeys(product);
+	}
+	public void clickSearch() {
+		driver.findElement(btn_search).click();
+	}
 
 }

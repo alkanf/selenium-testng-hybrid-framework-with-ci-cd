@@ -20,7 +20,9 @@ public class RegistrationPage extends BasePage {
 	private final By btn_PrivacyPolicy = By.xpath("//input[@name='agree']");
 	private final By btn_Continue = By.xpath("//input[@value='Continue']");
 	private final By txt_AccountCreated = By.xpath("//h1[normalize-space()='Your Account Has Been Created!']");
-
+    private final By btn_MyAccount = By.xpath("//a[@title='My Account']");
+    private final By btn_Logout = By.xpath("(//a[normalize-space()='Logout'])[1]");
+    		
 	
 	//Adding getsuccess msg or not as it in another page?
 	//3) Actions
@@ -60,7 +62,12 @@ public class RegistrationPage extends BasePage {
 	    } 
 	    catch (Exception e) {
 	        return e.getMessage();
-	    }
+	    }}
+	public void click_MyAccount() {
+	 driver.findElement(btn_MyAccount).click();
+	}
+	public void click_Logout() {
+	driver.findElement(btn_Logout).click();
 	}
 
 

@@ -9,17 +9,17 @@
     <parameter name="operator" value="Windows"/>
     <groups>
       <run>
-        <include name="Datadriven"/>
+        <include name="Master"/>
       </run>
     </groups>
     <classes>
-      <class name="testCases.TC003_LoginDDT">
+      <class name="testCases.TC006_EndToEndTest">
         <methods>
           <include name="setup"/>
-          <include name="verify_loginDDT" invocation-numbers="0 1 2"/>
           <include name="exit"/>
+          <include name="end_to_end"/>
         </methods>
-      </class> <!-- testCases.TC003_LoginDDT -->
+      </class> <!-- testCases.TC006_EndToEndTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
