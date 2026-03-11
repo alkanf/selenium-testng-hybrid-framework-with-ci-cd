@@ -79,37 +79,33 @@ public class BaseClass {
 			}
 		} 
 		
-		// --- LOCAL EXECUTION (Standard or GitHub Actions) ---
-		else if (executionEnv.equalsIgnoreCase("local")) {
-			switch (browser.toLowerCase()) {
-				case "chrome":
-					ChromeOptions options = new ChromeOptions();
-					// Auto-detect GitHub Actions environment and enable Headless mode
-					if (System.getenv("GITHUB_ACTIONS") != null) {
-						options.addArguments("--headless=new");
-						options.addArguments("--no-sandbox");
-						options.addArguments("--disable-dev-shm-usage");
-						options.addArguments("--window-size=1920,1080");
-					}
-					driver = new ChromeDriver(options);
-					break;
+		// --- LOCAL EXECUTION ---
+		if (executionEnv.equalsIgnoreCase("local")) {
+		    switch (browser.toLowerCase()) {
+		        case "chrome":
+		            ChromeOptions chromeOptions = new ChromeOptions();
+		            if (operator.equalsIgnoreCase("linux")) {
+		                // Settings for GitHub Actions
+		                chromeOptions.addArguments("--headless=new");
+		                chromeOptions.addArguments("--no-sandbox");
+		                chromeOptions.addArguments("--disable-dev-shm-usage");
+		                chromeOptions.addArguments("--window-size=1920,1080"); // Critical for elements visibility
+		            }
+		            driver = new ChromeDriver(chromeOptions);
+		            break;
+		            
+		        case "firefox":
+		            FirefoxOptions firefoxOptions = new FirefoxOptions();
+		            if (operator.equalsIgnoreCase("linux")) {
+		                firefoxOptions.addArguments("--headless");
+		            }
+		            driver = new FirefoxDriver(firefoxOptions);
+		            break;
 
-				case "edge":
-					driver = new EdgeDriver();
-					break;
-
-				case "firefox":
-					FirefoxOptions foptions = new FirefoxOptions();
-					if (System.getenv("GITHUB_ACTIONS") != null) {
-						foptions.addArguments("-headless");
-					}
-					driver = new FirefoxDriver(foptions);
-					break;
-
-				default:
-					System.out.println("Invalid browser name for local..");
-					return;
-			}
+		        default:
+		            System.out.println("Invalid browser name");
+		            return;
+		    }
 		}
 
 		// Common Driver Settings
