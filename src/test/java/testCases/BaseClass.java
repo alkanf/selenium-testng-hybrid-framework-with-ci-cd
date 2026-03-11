@@ -24,101 +24,101 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 public class BaseClass {
 
 	public static WebDriver driver;
-	public Logger logger = LogManager.getLogger(this.getClass()); // Log4j
+	public Logger logger = LogManager.getLogger(this.getClass());
 	public Properties p;
 
 	@BeforeClass(alwaysRun = true)
 	@Parameters({ "operator", "browser" })
-	public void setup(String operator, String browser) throws IOException {
+	public void setup(@Optional("windows") String operator, @Optional("chrome") String browser) throws IOException {
 
-		// Loading config.properfies file
+		// Loading config.properties file
 		p = new Properties();
 		p.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
 
-		// Loading remote from config.properties for Grid
-		if (p.getProperty("execution_env").equalsIgnoreCase("remote")) {
+		String executionEnv = p.getProperty("execution_env");
 
+		// --- REMOTE EXECUTION (Selenium Grid) ---
+		if (executionEnv.equalsIgnoreCase("remote")) {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 
-			// operating system
+			// Operating system setup for Grid
 			if (operator.equalsIgnoreCase("windows")) {
 				capabilities.setPlatform(Platform.WIN10);
 			} else if (operator.equalsIgnoreCase("linux")) {
 				capabilities.setPlatform(Platform.LINUX);
 			} else {
-				System.out.println("No Matching Operator System");
+				System.out.println("No Matching Operating System");
 				return;
 			}
 
-			String gridURL = p.getProperty("gridURL"); // Correct grid URL
+			String gridURL = p.getProperty("gridURL");
 
-			// browser, can write if or switch in this case
-			// Chrome options for docker
+			// Browser setup for RemoteWebDriver
 			switch (browser.toLowerCase()) {
+				case "chrome":
+					ChromeOptions options = new ChromeOptions();
+					options.addArguments("--headless=new");
+					options.merge(capabilities);
+					driver = new RemoteWebDriver(URI.create(gridURL).toURL(), options);
+					break;
+				case "firefox":
+					FirefoxOptions foptions = new FirefoxOptions();
+					foptions.addArguments("-headless");
+					foptions.merge(capabilities);
+					driver = new RemoteWebDriver(URI.create(gridURL).toURL(), foptions);
+					break;
+				default:
+					System.out.println("Invalid browser name for remote..");
+					return;
+			}
+		} 
+		
+		// --- LOCAL EXECUTION (Standard or GitHub Actions) ---
+		else if (executionEnv.equalsIgnoreCase("local")) {
+			switch (browser.toLowerCase()) {
+				case "chrome":
+					ChromeOptions options = new ChromeOptions();
+					// Auto-detect GitHub Actions environment and enable Headless mode
+					if (System.getenv("GITHUB_ACTIONS") != null) {
+						options.addArguments("--headless=new");
+						options.addArguments("--no-sandbox");
+						options.addArguments("--disable-dev-shm-usage");
+						options.addArguments("--window-size=1920,1080");
+					}
+					driver = new ChromeDriver(options);
+					break;
 
-			case "chrome":
+				case "edge":
+					driver = new EdgeDriver();
+					break;
 
-				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--headless=new");
-				options.addArguments("--no-sandbox");
-				options.addArguments("--disable-dev-shm-usage");
-				options.addArguments("--remote-allow-origins=*");
+				case "firefox":
+					FirefoxOptions foptions = new FirefoxOptions();
+					if (System.getenv("GITHUB_ACTIONS") != null) {
+						foptions.addArguments("-headless");
+					}
+					driver = new FirefoxDriver(foptions);
+					break;
 
-				options.merge(capabilities);
-
-				driver = new RemoteWebDriver(
-						URI.create(gridURL).toURL(),
-						options);
-
-				break;
-
-			case "firefox":
-
-				FirefoxOptions foptions = new FirefoxOptions();
-				foptions.addArguments("-headless");
-
-				foptions.merge(capabilities);
-
-				driver = new RemoteWebDriver(
-						URI.create(gridURL).toURL(),
-						foptions);
-
-				break;
-
-			default:
-				System.out.println("Invalid browser name..");
-				return;
+				default:
+					System.out.println("Invalid browser name for local..");
+					return;
 			}
 		}
 
-		// Local Execution
-		if (p.getProperty("execution_env").equalsIgnoreCase("local")) {
-			switch (browser.toLowerCase()) {
-			case "chrome":
-				driver = new ChromeDriver();
-				break;
-			case "edge":
-				driver = new EdgeDriver();
-				break;
-			case "firefox":
-				driver = new FirefoxDriver();
-				break;
-			default:
-				System.out.println("Invalid browser name..");
-				return;
-			}
+		// Common Driver Settings
+		if (driver != null) {
+			driver.manage().deleteAllCookies();
+			driver.get(p.getProperty("appURL"));
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		}
-
-		// driver = new ChromeDriver(); without xml
-		driver.manage().deleteAllCookies();
-		driver.get(p.getProperty("appURL")); // Getting url from config.properites
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -128,8 +128,7 @@ public class BaseClass {
 		}
 	}
 
-	// Random Test Data Methods
-	public String randomString() { // Random identifer and take it from 0 - 5 length
+	public String randomString() {
 		return UUID.randomUUID().toString().substring(0, 5);
 	}
 
@@ -137,10 +136,7 @@ public class BaseClass {
 		return String.valueOf(System.currentTimeMillis()).substring(7);
 	}
 
-	// Capture SS Method for Extend Utility Class, Tname is test name
-	// TakesScreenshot is interface and timestap must be created
 	public String captureScreen(String tname) throws IOException {
-
 		String timeStamp = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
 		if (driver == null) {
@@ -153,9 +149,9 @@ public class BaseClass {
 		String targetFilePath = System.getProperty("user.dir") + "\\screenshots\\"
 				+ tname + "_" + timeStamp + ".png";
 
-		File targetFile = new File(targetFilePath); 
+		File targetFile = new File(targetFilePath);
 		sourceFile.renameTo(targetFile);
 
-		return targetFilePath; // Not only created but you need to pass to report also
+		return targetFilePath;
 	}
 }

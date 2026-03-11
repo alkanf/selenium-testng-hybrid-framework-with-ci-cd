@@ -1,46 +1,59 @@
-2026-03-04 11:02:55 INFO  TC005_AddToCart:16 - Starting TC005_AddToCart
-2026-03-04 11:02:55 INFO  TC005_AddToCart:20 - Typing on search box
-2026-03-04 11:02:57 INFO  TC005_AddToCart:27 - Validating expected product
-2026-03-04 11:03:44 INFO  TC005_AddToCart:16 - Starting TC005_AddToCart
-2026-03-04 11:03:44 INFO  TC005_AddToCart:20 - Typing on search box
-2026-03-04 11:03:46 INFO  TC005_AddToCart:27 - Validating expected product
-2026-03-04 11:03:46 INFO  TC005_AddToCart:40 - Finished TC004_Search Product
-2026-03-04 12:00:35 INFO  TC006_EndToEndTest:20 - Starting TC006_EndToEndTest
-2026-03-04 12:00:35 INFO  TC006_EndToEndTest:22 - Clicking on My Account
-2026-03-04 12:00:35 INFO  TC006_EndToEndTest:24 - Clicking on Register
-2026-03-04 12:00:36 INFO  TC006_EndToEndTest:26 - Entering customer details
-2026-03-04 12:00:42 INFO  TC006_EndToEndTest:40 - Validating expected message
-2026-03-04 12:00:42 INFO  TC006_EndToEndTest:45 - Clicking on Login
-2026-03-04 12:00:53 ERROR TC006_EndToEndTest:68 - Test Failed...
-2026-03-04 12:01:28 INFO  TC006_EndToEndTest:20 - Starting TC006_EndToEndTest
-2026-03-04 12:01:28 INFO  TC006_EndToEndTest:22 - Clicking on My Account
-2026-03-04 12:01:28 INFO  TC006_EndToEndTest:24 - Clicking on Register
-2026-03-04 12:01:29 INFO  TC006_EndToEndTest:26 - Entering customer details
-2026-03-04 12:01:32 INFO  TC006_EndToEndTest:40 - Validating expected message
-2026-03-04 12:01:33 INFO  TC006_EndToEndTest:45 - Clicking on Login
-2026-03-04 12:02:04 INFO  TC006_EndToEndTest:20 - Starting TC006_EndToEndTest
-2026-03-04 12:02:04 INFO  TC006_EndToEndTest:22 - Clicking on My Account
-2026-03-04 12:02:05 INFO  TC006_EndToEndTest:24 - Clicking on Register
-2026-03-04 12:02:06 INFO  TC006_EndToEndTest:26 - Entering customer details
-2026-03-04 12:14:02 INFO  TC006_EndToEndTest:20 - Starting TC006_EndToEndTest
-2026-03-04 12:14:02 INFO  TC006_EndToEndTest:22 - Clicking on My Account
-2026-03-04 12:14:02 INFO  TC006_EndToEndTest:24 - Clicking on Register
-2026-03-04 12:14:03 INFO  TC006_EndToEndTest:26 - Entering customer details
-2026-03-04 12:14:06 INFO  TC006_EndToEndTest:39 - Validating expected message
-2026-03-04 12:14:06 INFO  TC006_EndToEndTest:43 - Clicking on Logout
-2026-03-04 12:14:08 INFO  TC006_EndToEndTest:47 - Clicking on Login
-2026-03-04 12:14:08 INFO  TC006_EndToEndTest:49 - Entering customer login details
-2026-03-04 12:14:10 INFO  TC006_EndToEndTest:55 - Validating expected message
-2026-03-04 12:14:11 INFO  TC006_EndToEndTest:75 - Finished TC001_AccountRegistration
-2026-03-04 12:34:10 INFO  TC006_EndToEndTest:21 - Starting TC006_EndToEndTest
-2026-03-04 12:34:10 INFO  TC006_EndToEndTest:23 - Clicking on My Account
-2026-03-04 12:34:10 INFO  TC006_EndToEndTest:25 - Clicking on Register
-2026-03-04 12:34:11 INFO  TC006_EndToEndTest:27 - Entering customer details
-2026-03-04 12:34:14 INFO  TC006_EndToEndTest:40 - Validating expected message
-2026-03-04 12:34:14 INFO  TC006_EndToEndTest:44 - Clicking on Logout
-2026-03-04 12:34:15 INFO  TC006_EndToEndTest:48 - Clicking on Login
-2026-03-04 12:34:16 INFO  TC006_EndToEndTest:50 - Entering customer login details
-2026-03-04 12:34:18 INFO  TC006_EndToEndTest:55 - Validating expected message
-2026-03-04 12:34:18 INFO  TC006_EndToEndTest:60 - Typing on search box
-2026-03-04 12:34:19 INFO  TC006_EndToEndTest:67 - Validating expected product
-2026-03-04 12:34:20 INFO  TC006_EndToEndTest:82 - Finished TC001_AccountRegistration
+2026-03-11 12:23:45 INFO  TC001_AccountRegistration:13 - Starting TC001_AccountRegistration
+2026-03-11 12:23:45 INFO  TC001_AccountRegistration:15 - Clicking on My Account
+2026-03-11 12:23:46 INFO  TC001_AccountRegistration:17 - Clicking on Register
+2026-03-11 12:23:47 INFO  TC001_AccountRegistration:19 - Entering customer details
+2026-03-11 12:23:50 INFO  TC001_AccountRegistration:32 - Validating expected message
+2026-03-11 12:23:50 INFO  TC001_AccountRegistration:41 - Finished TC001_AccountRegistration
+2026-03-11 12:24:02 INFO  TC002_Login:16 - Starting TC001_AccountRegistration
+2026-03-11 12:24:02 INFO  TC002_Login:20 - Clicking on MyAccount
+2026-03-11 12:24:02 INFO  TC002_Login:22 - Clicking on Login
+2026-03-11 12:24:03 INFO  TC002_Login:25 - Entering customer login details
+2026-03-11 12:24:04 INFO  TC002_Login:31 - Validating expected message
+2026-03-11 12:24:05 INFO  TC002_Login:42 - Finished TC002_Login
+2026-03-11 12:24:13 INFO  TC004_SearchProduct:15 - Starting TC004_Search Product
+2026-03-11 12:24:13 INFO  TC004_SearchProduct:19 - Typing on search box
+2026-03-11 12:24:15 INFO  TC004_SearchProduct:23 - Validating expected product
+2026-03-11 12:24:15 INFO  TC004_SearchProduct:34 - Finished TC004_Search Product
+2026-03-11 12:24:26 INFO  TC005_AddToCart:16 - Starting TC005_AddToCart
+2026-03-11 12:24:26 INFO  TC005_AddToCart:20 - Typing on search box
+2026-03-11 12:24:28 INFO  TC005_AddToCart:27 - Validating expected product
+2026-03-11 12:24:28 INFO  TC005_AddToCart:40 - Finished TC004_Search Product
+2026-03-11 12:24:39 INFO  TC006_EndToEndTest:21 - Starting TC006_EndToEndTest
+2026-03-11 12:24:39 INFO  TC006_EndToEndTest:23 - Clicking on My Account
+2026-03-11 12:24:39 INFO  TC006_EndToEndTest:25 - Clicking on Register
+2026-03-11 12:24:40 INFO  TC006_EndToEndTest:27 - Entering customer details
+2026-03-11 12:24:43 INFO  TC006_EndToEndTest:40 - Validating expected message
+2026-03-11 12:24:43 INFO  TC006_EndToEndTest:44 - Clicking on Logout
+2026-03-11 12:24:44 INFO  TC006_EndToEndTest:48 - Clicking on Login
+2026-03-11 12:24:45 INFO  TC006_EndToEndTest:50 - Entering customer login details
+2026-03-11 12:24:46 INFO  TC006_EndToEndTest:55 - Validating expected message
+2026-03-11 12:24:47 INFO  TC006_EndToEndTest:60 - Typing on search box
+2026-03-11 12:24:48 INFO  TC006_EndToEndTest:67 - Validating product added
+2026-03-11 12:24:48 INFO  TC006_EndToEndTest:78 - Finished TC001_AccountRegistration
+2026-03-11 12:25:35 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 12:25:35 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 12:25:35 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 12:25:36 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 12:25:38 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 12:25:49 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 12:25:49 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 12:25:49 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 12:25:50 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 12:25:50 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 12:25:52 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 12:25:52 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 12:25:52 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 12:25:53 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 12:25:53 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 12:25:56 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 12:25:56 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 12:25:56 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 12:25:56 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 12:25:58 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 12:26:08 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
+2026-03-11 12:26:08 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 12:26:08 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 12:26:08 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 12:26:08 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 12:26:09 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 12:26:11 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
