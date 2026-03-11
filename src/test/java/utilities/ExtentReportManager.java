@@ -1,120 +1,70 @@
 package utilities;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-
 import testCases.BaseClass;
 
 public class ExtentReportManager implements ITestListener {
-
     public ExtentSparkReporter sparkReporter;
     public ExtentReports extent;
     public ExtentTest test;
-
     String repName;
 
     public void onStart(ITestContext testContext) {
-
-        Locale.setDefault(Locale.ENGLISH);
-
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         repName = "Test-Report-" + timeStamp + ".html";
+        
+        // Target folder is safer for Maven based environments
+        String reportPath = System.getProperty("user.dir") + File.separator + "target" + File.separator + "reports";
+        File reportDir = new File(reportPath);
+        if(!reportDir.exists()) reportDir.mkdirs();
 
-        // Fixed path for both Windows and Linux compatibility
-        sparkReporter = new ExtentSparkReporter("reports/" + repName);
+        sparkReporter = new ExtentSparkReporter(reportPath + File.separator + repName);
         sparkReporter.config().setDocumentTitle("opencart Automation Report");
         sparkReporter.config().setReportName("opencart Functional Testing");
         sparkReporter.config().setTheme(Theme.DARK);
 
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
-
         extent.setSystemInfo("Application", "opencart");
-        extent.setSystemInfo("Module", "Admin");
-        extent.setSystemInfo("Sub Module", "Customers");
+        extent.setSystemInfo("Operating System", System.getProperty("os.name"));
         extent.setSystemInfo("User Name", System.getProperty("user.name"));
-        extent.setSystemInfo("Environment", "QA");
-
-        String os = testContext.getCurrentXmlTest().getParameter("operator");
-        extent.setSystemInfo("Operating System", os);
-
-        String browser = testContext.getCurrentXmlTest().getParameter("browser");
-        extent.setSystemInfo("Browser", browser);
-
-        List<String> includedGroups = testContext.getCurrentXmlTest().getIncludedGroups();
-        if (!includedGroups.isEmpty()) {
-            extent.setSystemInfo("Groups", includedGroups.toString());
-        }
+        extent.setSystemInfo("Browser", testContext.getCurrentXmlTest().getParameter("browser"));
     }
 
     public void onTestSuccess(ITestResult result) {
-
         test = extent.createTest(result.getTestClass().getName());
-        test.assignCategory(result.getMethod().getGroups());
-        test.log(Status.PASS, result.getName() + " got successfully executed");
+        test.log(Status.PASS, result.getName() + " executed successfully");
     }
 
     public void onTestFailure(ITestResult result) {
-
         test = extent.createTest(result.getTestClass().getName());
-        test.assignCategory(result.getMethod().getGroups());
-
-        test.log(Status.FAIL, result.getName() + " got failed");
-        test.log(Status.INFO, result.getThrowable());
-
+        test.log(Status.FAIL, result.getName() + " failed");
+        test.log(Status.INFO, result.getThrowable().getMessage());
         try {
-            BaseClass bs = (BaseClass) result.getInstance();
-            String imgPath = bs.captureScreen(result.getName());
-
-            if (imgPath != null && !imgPath.isEmpty()) {
-                test.addScreenCaptureFromPath(imgPath);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            String imgPath = new BaseClass().captureScreen(result.getName());
+            test.addScreenCaptureFromPath(imgPath);
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     public void onTestSkipped(ITestResult result) {
-
         test = extent.createTest(result.getTestClass().getName());
-        test.assignCategory(result.getMethod().getGroups());
-        test.log(Status.SKIP, result.getName() + " got skipped");
-        test.log(Status.INFO, result.getThrowable());
+        test.log(Status.SKIP, result.getName() + " skipped");
     }
 
     public void onFinish(ITestContext testContext) {
-
         extent.flush();
-
-        // Used File.separator to handle both Windows (\) and Linux (/)
-        String pathOfExtentReport = System.getProperty("user.dir") + File.separator + "reports" + File.separator + repName;
-        File extentReport = new File(pathOfExtentReport);
-
-        try {
-            // Check if Desktop is supported to avoid HeadlessException on GitHub Actions
-            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                Desktop.getDesktop().browse(extentReport.toURI());
-            } else {
-                System.out.println("Report generated successfully: " + pathOfExtentReport);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Mandatory delay for GitHub Actions to catch up with file system writing
+        try { Thread.sleep(2000); } catch (InterruptedException e) { e.printStackTrace(); }
+        System.out.println("Extent Report flushed to: target/reports/" + repName);
     }
 }
