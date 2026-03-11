@@ -14,20 +14,24 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 24
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '24'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
 
-      - name: Run Selenium Tests
-        run: mvn clean test
-        # ÖNEMLİ: Eğer kodunda 'headless' ayarı yoksa bu adım hata verebilir.
+      - name: Run All Selenium Tests
+        # We target your Grouping.xml file specifically
+        run: mvn clean test -DsuiteXmlFile=src/test/java/testCases/Grouping.xml -Dbrowser=chrome -Doperator=linux
 
-      - name: Upload Test Report
+      - name: Upload Extent Report and Screenshots
+        # This ensures reports are saved even if tests fail
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: junit-reports
-          path: target/surefire-reports/
+          name: Selenium-Test-Artifacts
+          # We gather your specific reports and screenshots folders
+          path: |
+            reports/
+            screenshots/
