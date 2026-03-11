@@ -89,3 +89,116 @@
 2026-03-11 16:37:29 INFO  TC006_EndToEndTest:60 - Typing on search box
 2026-03-11 16:37:31 INFO  TC006_EndToEndTest:67 - Validating product added
 2026-03-11 16:37:31 INFO  TC006_EndToEndTest:78 - Finished TC001_AccountRegistration
+2026-03-11 17:05:30 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:05:30 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:05:30 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:05:31 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:05:33 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:05:43 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:05:43 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:05:43 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:05:44 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:05:45 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:05:46 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:05:46 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:05:47 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:05:47 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:05:49 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:05:50 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:05:50 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:05:50 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:05:50 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:05:52 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:06:02 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
+2026-03-11 17:06:02 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:06:02 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:06:02 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:06:02 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:06:04 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:06:05 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
+2026-03-11 17:07:07 INFO  TC001_AccountRegistration:13 - Starting TC001_AccountRegistration
+2026-03-11 17:07:07 INFO  TC001_AccountRegistration:15 - Clicking on My Account
+2026-03-11 17:07:07 INFO  TC001_AccountRegistration:17 - Clicking on Register
+2026-03-11 17:07:08 INFO  TC001_AccountRegistration:19 - Entering customer details
+2026-03-11 17:07:11 INFO  TC001_AccountRegistration:32 - Validating expected message
+2026-03-11 17:07:11 INFO  TC001_AccountRegistration:41 - Finished TC001_AccountRegistration
+2026-03-11 17:07:21 INFO  TC002_Login:16 - Starting TC001_AccountRegistration
+2026-03-11 17:07:21 INFO  TC002_Login:20 - Clicking on MyAccount
+2026-03-11 17:07:21 INFO  TC002_Login:22 - Clicking on Login
+2026-03-11 17:07:22 INFO  TC002_Login:25 - Entering customer login details
+2026-03-11 17:07:24 INFO  TC002_Login:31 - Validating expected message
+2026-03-11 17:07:24 INFO  TC002_Login:42 - Finished TC002_Login
+2026-03-11 17:07:32 INFO  TC004_SearchProduct:15 - Starting TC004_Search Product
+2026-03-11 17:07:32 INFO  TC004_SearchProduct:19 - Typing on search box
+2026-03-11 17:07:33 INFO  TC004_SearchProduct:23 - Validating expected product
+2026-03-11 17:07:33 INFO  TC004_SearchProduct:34 - Finished TC004_Search Product
+2026-03-11 17:07:40 INFO  TC005_AddToCart:16 - Starting TC005_AddToCart
+2026-03-11 17:07:40 INFO  TC005_AddToCart:20 - Typing on search box
+2026-03-11 17:07:42 INFO  TC005_AddToCart:27 - Validating expected product
+2026-03-11 17:07:42 INFO  TC005_AddToCart:40 - Finished TC004_Search Product
+2026-03-11 17:07:50 INFO  TC006_EndToEndTest:21 - Starting TC006_EndToEndTest
+2026-03-11 17:07:50 INFO  TC006_EndToEndTest:23 - Clicking on My Account
+2026-03-11 17:07:50 INFO  TC006_EndToEndTest:25 - Clicking on Register
+2026-03-11 17:07:51 INFO  TC006_EndToEndTest:27 - Entering customer details
+2026-03-11 17:07:54 INFO  TC006_EndToEndTest:40 - Validating expected message
+2026-03-11 17:07:54 INFO  TC006_EndToEndTest:44 - Clicking on Logout
+2026-03-11 17:07:55 INFO  TC006_EndToEndTest:48 - Clicking on Login
+2026-03-11 17:07:56 INFO  TC006_EndToEndTest:50 - Entering customer login details
+2026-03-11 17:07:57 INFO  TC006_EndToEndTest:55 - Validating expected message
+2026-03-11 17:07:57 INFO  TC006_EndToEndTest:60 - Typing on search box
+2026-03-11 17:07:59 INFO  TC006_EndToEndTest:67 - Validating product added
+2026-03-11 17:07:59 INFO  TC006_EndToEndTest:78 - Finished TC001_AccountRegistration
+2026-03-11 17:11:20 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:11:20 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:11:21 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:11:21 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:11:23 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:11:34 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:11:34 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:11:34 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:11:34 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:11:36 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:11:37 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:11:37 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:11:37 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:11:37 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:11:39 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:11:40 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:11:40 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:11:40 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:11:41 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:11:42 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:11:52 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
+2026-03-11 17:11:52 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:11:52 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:11:52 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:11:53 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:11:53 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:11:55 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
+2026-03-11 17:18:41 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:18:41 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:18:41 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:18:42 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:18:43 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:18:53 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:18:53 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:18:54 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:18:54 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:18:56 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:18:57 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:18:57 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:18:57 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:18:57 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:18:59 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:19:00 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:19:00 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:19:00 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:19:00 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:19:02 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:19:12 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
+2026-03-11 17:19:12 INFO  TC003_LoginDDT:15 - Starting TC003_AccountRegistration
+2026-03-11 17:19:12 INFO  TC003_LoginDDT:19 - Clicking on MyAccount
+2026-03-11 17:19:13 INFO  TC003_LoginDDT:21 - Clicking on Login
+2026-03-11 17:19:13 INFO  TC003_LoginDDT:24 - Entering customer login details
+2026-03-11 17:19:15 INFO  TC003_LoginDDT:30 - Validating expected message
+2026-03-11 17:19:16 INFO  TC003_LoginDDT:66 - Finished TC003_AccountRegistration
