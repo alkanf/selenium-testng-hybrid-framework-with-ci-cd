@@ -3,7 +3,6 @@ package utilities;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +35,7 @@ public class ExtentReportManager implements ITestListener {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         repName = "Test-Report-" + timeStamp + ".html";
 
+        // Fixed path for both Windows and Linux compatibility
         sparkReporter = new ExtentSparkReporter("reports/" + repName);
         sparkReporter.config().setDocumentTitle("opencart Automation Report");
         sparkReporter.config().setReportName("opencart Functional Testing");
@@ -78,7 +78,6 @@ public class ExtentReportManager implements ITestListener {
         test.log(Status.INFO, result.getThrowable());
 
         try {
-            // Take ss from object
             BaseClass bs = (BaseClass) result.getInstance();
             String imgPath = bs.captureScreen(result.getName());
 
@@ -103,11 +102,17 @@ public class ExtentReportManager implements ITestListener {
 
         extent.flush();
 
-        String pathOfExtentReport = System.getProperty("user.dir") + "\\reports\\" + repName;
+        // Used File.separator to handle both Windows (\) and Linux (/)
+        String pathOfExtentReport = System.getProperty("user.dir") + File.separator + "reports" + File.separator + repName;
         File extentReport = new File(pathOfExtentReport);
 
         try {
-            Desktop.getDesktop().browse(extentReport.toURI());
+            // Check if Desktop is supported to avoid HeadlessException on GitHub Actions
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                Desktop.getDesktop().browse(extentReport.toURI());
+            } else {
+                System.out.println("Report generated successfully: " + pathOfExtentReport);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
