@@ -21,14 +21,18 @@ jobs:
           distribution: 'oracle'
           cache: maven
 
+      - name: Create Reports Directory
+        # This ensures the directory exists before the tests run
+        run: mkdir -p reports
+
       - name: Run All Selenium Tests
+        # Added -Duser.dir to ensure Java knows exactly where it is
         run: mvn clean test "-DsuiteXmlFile=src/test/java/testCases/Grouping.xml" -Dbrowser=chrome -Doperator=linux
 
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Selenium-Test-Artifacts
-          path: |
-            reports/
-            screenshots/
+          name: Selenium-Test-Report
+          path: reports/
+          if-no-files-found: error
